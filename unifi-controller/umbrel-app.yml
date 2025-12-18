@@ -1,0 +1,15 @@
+version: 1
+slug: unifi-controller
+name: UniFi Controller
+tagline: Gerencie redes Ubiquiti UniFi
+description: >-
+  Controller oficial para dispositivos UniFi com suporte a MongoDB embutido.
+  Acesse via HTTPS na porta 8443 com certificado autoassinado.
+version: latest
+port: 8443
+image:
+  repository: ghcr.io
+  tag: jacobalberty/unifi:latest
+  pullPolicy: Always
+healthchecks:
+  log: true

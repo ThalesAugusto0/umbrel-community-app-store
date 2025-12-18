@@ -1,0 +1,14 @@
+services:
+  unifi:
+    image: jacobalberty/unifi:latest
+    container_name: unifi-controller
+    restart: unless-stopped
+    environment:
+      - TZ=America/Sao_Paulo
+      - PUID=1000
+      - PGID=1000
+      - RUNAS_UID0=false
+    volumes:
+      - unifi-data:/unifi
+volumes:
+  unifi-data:
