@@ -1,6 +1,5 @@
 services:
   app_proxy:
-    image: getumbrel/app-proxy:latest
     environment:
       APP_HOST: thales-unifi-controller_https_bridge_1
       APP_PORT: 8000
