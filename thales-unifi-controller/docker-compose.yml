@@ -7,7 +7,6 @@ services:
 
   server:
     image: lscr.io/linuxserver/unifi-network-application:9.0.108
-    init: true
     environment:
       - PUID=1000
       - PGID=1000

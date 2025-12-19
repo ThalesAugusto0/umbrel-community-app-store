@@ -23,9 +23,13 @@ description: >-
 
   Portas utilizadas:
   - 8443: Interface Web (HTTPS)
-  - 8080: Comunicação com dispositivos
+  - 18080: Comunicação com dispositivos (mapeada internamente para 8080)
   - 3478/udp: STUN
   - 10001/udp: Descoberta de APs
+
+
+  IMPORTANTE: Para adotar dispositivos UniFi, configure o Inform Host 
+  para IP_DO_UMBREL:18080 nas configurações do controller.
 developer: Ubiquiti / LinuxServer.io
 website: https://www.ui.com/software/
 submitter: Thales Augusto
