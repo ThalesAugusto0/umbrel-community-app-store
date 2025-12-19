@@ -1,18 +1,24 @@
-manifestVersion: 1
+manifestVersion: 1.1
 id: thales-unifi-controller
-name: UniFi Controller
+name: UniFi Network Application
 tagline: Gerencie redes Ubiquiti UniFi
 icon: https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/unifi-controller-icon.png
 category: networking
-version: "1.0.0"
+version: "9.0.108"
 port: 8443
 description: >-
-  O UniFi Controller permite gerenciar sua rede UniFi de forma centralizada. 
+  O UniFi Network Application permite gerenciar sua rede UniFi de forma centralizada. 
   Configure Access Points, Switches e outros dispositivos Ubiquiti UniFi.
 
 
-  Este container usa o certificado SSL autoassinado do UniFi.
-  Para adotar dispositivos, configure o "Inform Host" nas configurações do controller.
+  Esta é a versão mais recente do software UniFi Network (substituiu o antigo UniFi Controller).
+
+
+  Após a instalação, acesse a interface web via HTTPS e complete o assistente de configuração inicial.
+
+
+  Para adotar dispositivos, configure o "Inform Host" em Settings > System > Advanced 
+  com o IP do seu Umbrel.
 
 
   Portas utilizadas:
@@ -24,12 +30,13 @@ developer: Ubiquiti / LinuxServer.io
 website: https://www.ui.com/software/
 submitter: Thales Augusto
 submission: https://github.com/ThalesAugusto0/umbrel-community-app-store
-support: https://github.com/linuxserver/docker-unifi-controller/issues
-repo: https://github.com/linuxserver/docker-unifi-controller
+support: https://github.com/linuxserver/docker-unifi-network-application/issues
+repo: https://github.com/linuxserver/docker-unifi-network-application
 gallery:
   - https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/unifi-controller-banner.png
 releaseNotes: >-
-  Versão inicial do UniFi Controller para Umbrel.
+  Versão inicial do UniFi Network Application para Umbrel.
+  Inclui MongoDB 4.4 embutido para armazenamento de dados.
 dependencies: []
 path: ""
 defaultUsername: ""

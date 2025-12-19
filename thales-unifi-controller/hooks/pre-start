@@ -1,0 +1,33 @@
+#!/bin/bash
+set -e
+
+# Criar diretórios necessários
+mkdir -p "${APP_DATA_DIR}/data/config"
+mkdir -p "${APP_DATA_DIR}/data/mongodb"
+
+# Copiar script de inicialização do MongoDB se não existir
+if [ ! -f "${APP_DATA_DIR}/data/init-mongo.sh" ]; then
+  cat > "${APP_DATA_DIR}/data/init-mongo.sh" << 'MONGOEOF'
+#!/bin/bash
+
+if which mongosh > /dev/null 2>&1; then
+  mongo_init_bin='mongosh'
+else
+  mongo_init_bin='mongo'
+fi
+"${mongo_init_bin}" <<EOF
+use admin
+db.auth("root", "rootpwd123")
+use unifi
+db.createUser({
+  user: "unifi",
+  pwd: "unifipwd123",
+  roles: [
+    { db: "unifi", role: "dbOwner" },
+    { db: "unifi_stat", role: "dbOwner" }
+  ]
+})
+EOF
+MONGOEOF
+  chmod +x "${APP_DATA_DIR}/data/init-mongo.sh"
+fi

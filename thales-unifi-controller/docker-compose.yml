@@ -1,0 +1,41 @@
+services:
+  app_proxy:
+    environment:
+      APP_HOST: thales-unifi-controller_server_1
+      APP_PORT: 8443
+      PROXY_AUTH_ADD: "false"
+
+  server:
+    image: lscr.io/linuxserver/unifi-network-application:9.0.108
+    init: true
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Sao_Paulo
+      - MONGO_USER=unifi
+      - MONGO_PASS=unifipwd123
+      - MONGO_HOST=db
+      - MONGO_PORT=27017
+      - MONGO_DBNAME=unifi
+      - MONGO_AUTHSOURCE=admin
+      - MEM_LIMIT=1024
+      - MEM_STARTUP=512
+    volumes:
+      - ${APP_DATA_DIR}/data/config:/config
+    ports:
+      - "3478:3478/udp"
+      - "10001:10001/udp"
+      - "8080:8080"
+    depends_on:
+      - db
+    restart: on-failure
+
+  db:
+    image: mongo:4.4
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=rootpwd123
+    volumes:
+      - ${APP_DATA_DIR}/data/mongodb:/data/db
+      - ${APP_DATA_DIR}/data/init-mongo.sh:/docker-entrypoint-initdb.d/init-mongo.sh:ro
+    restart: on-failure
