@@ -1,7 +1,6 @@
-version: '2.3'
-
 services:
   app_proxy:
+    image: getumbrel/app-proxy:latest
     environment:
       APP_HOST: thales-unifi-controller_https_bridge_1
       APP_PORT: 8000
@@ -9,7 +8,6 @@ services:
 
   server:
     image: jacobalberty/unifi:latest
-    container_name: unifi_controller
     restart: on-failure
     init: true
     environment:
@@ -25,13 +23,13 @@ services:
       - ${APP_DATA_DIR}/data/unifi-data:/unifi
       - ${APP_DATA_DIR}/data/unifi-data/data/backup:/unifi/data/backup
     ports:
-      - "3478:3478/udp"   # STUN
-      - "6789:6789/tcp"   # Speed Test (mobile app)
-      - "18080:8080/tcp"  # Device Communication (Inform) - Mapeado para 18080 para evitar conflitos
-      - "8443:8443/tcp"   # GUI / API (Acesso direto HTTPS sem passar pelo Umbrel)
-      - "8880:8880/tcp"   # Portal de Convidados (HTTP)
-      - "8843:8843/tcp"   # Portal de Convidados (HTTPS)
-      - "10001:10001/udp" # AP Discovery
+      - "3478:3478/udp"
+      - "6789:6789/tcp"
+      - "18080:8080/tcp"
+      - "18443:8443/tcp"
+      - "18880:8880/tcp"
+      - "18843:8843/tcp"
+      - "10001:10001/udp"
     depends_on:
       - db
 
