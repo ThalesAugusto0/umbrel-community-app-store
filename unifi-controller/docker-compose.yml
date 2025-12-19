@@ -2,14 +2,10 @@ version: "3.7"
 
 services:
   app_proxy:
-    image: ghcr.io/getumbrel/app-proxy:latest
-    user: "1000:1000"
-    init: true
     environment:
+      # The format here is: <app-id>_<docker-service-name>_1
       APP_HOST: thales-app-store-unifi-controller_server_1
       APP_PORT: 8443
-    ports:
-      - "8443:8443"
 
   server:
     image: jacobalberty/unifi:latest
