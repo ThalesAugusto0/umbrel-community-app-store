@@ -13,8 +13,8 @@ developer: Ubiquiti
 website: https://unifi.ubnt.com
 submitter: Thales Augusto
 submission: https://github.com/ThalesAugusto0/umbrel-community-app-store
-support: https://github.com/jacobalberty/unifi-docker/issues
-repo: https://github.com/jacobalberty/unifi-docker
+support: https://github.com/linuxserver/docker-unifi-controller/issues
+repo: https://github.com/linuxserver/docker-unifi-controller
 gallery: []
 releaseNotes: ""
 dependencies: []

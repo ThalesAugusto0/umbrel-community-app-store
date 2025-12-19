@@ -8,14 +8,16 @@ services:
       APP_PORT: 8443
 
   server:
-    image: jacobalberty/unifi:latest
+    image: linuxserver/unifi-controller:latest
     user: "1000:1000"
     init: true
     restart: unless-stopped
     environment:
       - TZ=America/Sao_Paulo
+      - PUID=1000
+      - PGID=1000
     volumes:
-      - unifi-data:/unifi
+      - unifi-data:/config
 
 volumes:
   unifi-data:
