@@ -1,14 +1,25 @@
+version: "3.7"
+
 services:
-  unifi:
+  app_proxy:
+    image: ghcr.io/getumbrel/app-proxy:latest
+    user: "1000:1000"
+    init: true
+    environment:
+      APP_HOST: thales-app-store-unifi-controller_server_1
+      APP_PORT: 8443
+    ports:
+      - "8443:8443"
+
+  server:
     image: jacobalberty/unifi:latest
-    container_name: unifi-controller
+    user: "1000:1000"
+    init: true
     restart: unless-stopped
     environment:
       - TZ=America/Sao_Paulo
-      - PUID=1000
-      - PGID=1000
-      - RUNAS_UID0=false
     volumes:
       - unifi-data:/unifi
+
 volumes:
   unifi-data:
