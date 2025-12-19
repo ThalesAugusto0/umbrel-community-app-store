@@ -3,7 +3,9 @@ services:
     environment:
       APP_HOST: thales-unifi-controller_server_1
       APP_PORT: 8443
+      APP_SCHEME: https
       PROXY_AUTH_ADD: "false"
+      NODE_TLS_REJECT_UNAUTHORIZED: "0"
 
   server:
     image: lscr.io/linuxserver/unifi-network-application:9.0.108
