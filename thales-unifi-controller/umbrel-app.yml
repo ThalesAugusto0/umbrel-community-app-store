@@ -1,4 +1,4 @@
-manifestVersion: 1.1
+manifestVersion: 1
 id: thales-unifi-controller
 name: UniFi Network Application
 tagline: Gerencie redes Ubiquiti UniFi
@@ -18,7 +18,7 @@ description: >-
 
 
   Para adotar dispositivos, configure o "Inform Host" em Settings > System > Advanced 
-  com o IP do seu Umbrel.
+  com o IP do seu Umbrel na porta 18080.
 
 
   Portas utilizadas:
@@ -26,10 +26,6 @@ description: >-
   - 18080: Comunicação com dispositivos (mapeada internamente para 8080)
   - 3478/udp: STUN
   - 10001/udp: Descoberta de APs
-
-
-  IMPORTANTE: Para adotar dispositivos UniFi, configure o Inform Host 
-  para IP_DO_UMBREL:18080 nas configurações do controller.
 developer: Ubiquiti / LinuxServer.io
 website: https://www.ui.com/software/
 submitter: Thales Augusto
