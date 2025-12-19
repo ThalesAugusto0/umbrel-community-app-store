@@ -6,27 +6,25 @@ services:
       PROXY_AUTH_ADD: "false"
 
   server:
-    image: lscr.io/linuxserver/unifi-network-application:9.0.108
+    image: jacobalberty/unifi:latest
+    restart: on-failure
     environment:
-      - PUID=1000
-      - PGID=1000
       - TZ=America/Sao_Paulo
-      - MONGO_USER=unifi
-      - MONGO_PASS=unifipwd123
-      - MONGO_HOST=db
-      - MONGO_PORT=27017
-      - MONGO_DBNAME=unifi
-      - MEM_LIMIT=2048
-      - MEM_STARTUP=1024
+      - UNIFI_UID=1000
+      - UNIFI_GID=1000
+      - RUNAS_UID0=false
+      - BIND_PRIV=false
+      - DB_MONGO_URI=mongodb://unifi:unifipwd123@db:27017/unifi
+      - DB_MONGO_STAT_URI=mongodb://unifi:unifipwd123@db:27017/unifi_stat
+      - DB_NAME=unifi
     volumes:
-      - ${APP_DATA_DIR}/data/config:/config
+      - ${APP_DATA_DIR}/data/unifi-data:/unifi
     ports:
       - "3478:3478/udp"
       - "10001:10001/udp"
       - "18080:8080"
     depends_on:
       - db
-    restart: on-failure
 
   db:
     image: mongo:4.4
