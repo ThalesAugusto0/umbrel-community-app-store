@@ -2,22 +2,35 @@ manifestVersion: 1
 id: thales-unifi-controller
 name: UniFi Controller
 tagline: Gerencie redes Ubiquiti UniFi
-icon: https://ibb.co/8gGFCKXb
-category: Networking
+icon: https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/unifi-controller-icon.png
+category: networking
 version: "1.0.0"
 port: 8443
 description: >-
-  Controller oficial para dispositivos UniFi com suporte a MongoDB embutido.
-  Acesse via HTTPS na porta 8443 com certificado autoassinado.
-developer: Ubiquiti
-website: https://unifi.ubnt.com
+  O UniFi Controller permite gerenciar sua rede UniFi de forma centralizada. 
+  Configure Access Points, Switches e outros dispositivos Ubiquiti UniFi.
+
+
+  Este container usa o certificado SSL autoassinado do UniFi.
+  Para adotar dispositivos, configure o "Inform Host" nas configurações do controller.
+
+
+  Portas utilizadas:
+  - 8443: Interface Web (HTTPS)
+  - 8080: Comunicação com dispositivos
+  - 3478/udp: STUN
+  - 10001/udp: Descoberta de APs
+developer: Ubiquiti / LinuxServer.io
+website: https://www.ui.com/software/
 submitter: Thales Augusto
 submission: https://github.com/ThalesAugusto0/umbrel-community-app-store
 support: https://github.com/linuxserver/docker-unifi-controller/issues
 repo: https://github.com/linuxserver/docker-unifi-controller
-gallery: []
-releaseNotes: ""
+gallery:
+  - https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/unifi-controller-banner.png
+releaseNotes: >-
+  Versão inicial do UniFi Controller para Umbrel.
 dependencies: []
-path: "/"
+path: ""
 defaultUsername: ""
 defaultPassword: ""
