@@ -3,21 +3,17 @@ version: "3.7"
 services:
   app_proxy:
     environment:
-      # The format here is: <app-id>_<docker-service-name>_1
       APP_HOST: thales-app-store-unifi-controller_server_1
       APP_PORT: 8443
 
   server:
     image: linuxserver/unifi-controller:latest
-    user: "1000:1000"
-    init: true
-    restart: unless-stopped
     environment:
-      - TZ=America/Sao_Paulo
       - PUID=1000
       - PGID=1000
+      - TZ=America/Sao_Paulo
     volumes:
-      - unifi-data:/config
+      - ${APP_DATA_DIR}/data/config:/config
+    restart: on-failure
 
 volumes:
-  unifi-data:

@@ -18,6 +18,6 @@ repo: https://github.com/linuxserver/docker-unifi-controller
 gallery: []
 releaseNotes: ""
 dependencies: []
-path: ""
+path: "/"
 defaultUsername: ""
 defaultPassword: ""
