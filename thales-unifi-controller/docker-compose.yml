@@ -1,3 +1,5 @@
+version: '2.3'
+
 services:
   app_proxy:
     environment:
@@ -7,28 +9,29 @@ services:
 
   server:
     image: jacobalberty/unifi:latest
+    container_name: unifi_controller
     restart: on-failure
+    init: true
     environment:
       - TZ=America/Sao_Paulo
       - UNIFI_UID=1000
       - UNIFI_GID=1000
       - RUNAS_UID0=false
       - BIND_PRIV=false
-      - DB_MONGO_URI=mongodb://unifi:unifipwd123@db:27017/unifi
-      - DB_MONGO_STAT_URI=mongodb://unifi:unifipwd123@db:27017/unifi_stat
+      - DB_URI=mongodb://unifi:unifipwd123@db:27017/unifi
+      - STATDB_URI=mongodb://unifi:unifipwd123@db:27017/unifi_stat
       - DB_NAME=unifi
     volumes:
       - ${APP_DATA_DIR}/data/unifi-data:/unifi
+      - ${APP_DATA_DIR}/data/unifi-data/data/backup:/unifi/data/backup
     ports:
-      - "3478:3478/udp"
-      - "10001:10001/udp"
-      - "18080:8080"
-      - "6789:6789/tcp"   # Speed test
-      - "8080:8080/tcp"   # Device/ controller comm.
-      - "8443:8443/tcp"   # Controller GUI/API as seen in a web browser
-      - "8880:8880/tcp"   # HTTP portal redirection
-      - "8843:8843/tcp"   # HTTPS portal redirection
-      - "10001:10001/udp" # AP discovery
+      - "3478:3478/udp"   # STUN
+      - "6789:6789/tcp"   # Speed Test (mobile app)
+      - "18080:8080/tcp"  # Device Communication (Inform) - Mapeado para 18080 para evitar conflitos
+      - "8443:8443/tcp"   # GUI / API (Acesso direto HTTPS sem passar pelo Umbrel)
+      - "8880:8880/tcp"   # Portal de Convidados (HTTP)
+      - "8843:8843/tcp"   # Portal de Convidados (HTTPS)
+      - "10001:10001/udp" # AP Discovery
     depends_on:
       - db
 
@@ -42,8 +45,11 @@ services:
   https_bridge:
     image: debian:stable-slim
     command: >
-      bash -c "apt-get update && apt-get install -y socat && 
-      socat TCP-LISTEN:8000,fork,reuseaddr OPENSSL:server:8443,verify=0"
+      bash -c "apt-get update && apt-get install -y socat &&
+      echo 'Aguardando UniFi iniciar na porta 8443...' &&
+      until (echo > /dev/tcp/server/8443) >/dev/null 2>&1; do sleep 5; done;
+      echo 'UniFi online! Iniciando ponte HTTPS...' &&
+      exec socat TCP-LISTEN:8000,fork,reuseaddr OPENSSL:server:8443,verify=0"
     depends_on:
       - server
     restart: on-failure
