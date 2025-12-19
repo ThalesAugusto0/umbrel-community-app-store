@@ -4,40 +4,36 @@ name: UniFi Network Application
 tagline: Gerencie redes Ubiquiti UniFi
 icon: https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/unifi-controller-icon.png
 category: networking
-version: "9.0.108"
+version: "10.0.162"
 port: 8443
 description: >-
   O UniFi Network Application permite gerenciar sua rede UniFi de forma centralizada. 
   Configure Access Points, Switches e outros dispositivos Ubiquiti UniFi.
 
 
-  Esta é a versão mais recente do software UniFi Network (substituiu o antigo UniFi Controller).
+  Esta versão utiliza a imagem mantida por Jacob Alberty, amplamente utilizada pela comunidade.
 
 
-  Após a instalação, acesse a interface web via HTTPS e complete o assistente de configuração inicial.
+  Após a instalação, aguarde alguns minutos para a inicialização e acesse a interface web via HTTPS.
 
 
   Para adotar dispositivos, configure o "Inform Host" em Settings > System > Advanced 
-  com o IP do seu Umbrel na porta 18080.
+  com o IP do seu Umbrel na porta 18080 (ex: http://192.168.1.10:18080/inform).
 
 
   Portas utilizadas:
   - 8443: Interface Web (HTTPS)
-  - 18080: Comunicação com dispositivos (mapeada internamente para 8080)
+  - 18080: Comunicação com dispositivos (Inform Port)
   - 3478/udp: STUN
   - 10001/udp: Descoberta de APs
-developer: Ubiquiti / LinuxServer.io
+developer: Ubiquiti / Jacob Alberty
 website: https://www.ui.com/software/
 submitter: Thales Augusto
 submission: https://github.com/ThalesAugusto0/umbrel-community-app-store
-support: https://github.com/linuxserver/docker-unifi-network-application/issues
-repo: https://github.com/linuxserver/docker-unifi-network-application
+support: https://github.com/jacobalberty/unifi-docker/issues
+repo: https://github.com/jacobalberty/unifi-docker
 gallery:
-  - https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/unifi-controller-banner.png
+  - https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/unifi-controller-icon.png
 releaseNotes: >-
-  Versão inicial do UniFi Network Application para Umbrel.
-  Inclui MongoDB 4.4 embutido para armazenamento de dados.
-dependencies: []
-path: ""
-defaultUsername: ""
-defaultPassword: ""
+  Atualização para a versão 10.0.162.
+  Migração para a imagem jacobalberty/unifi para maior compatibilidade.
