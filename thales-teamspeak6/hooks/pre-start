@@ -1,7 +1,0 @@
-#!/bin/bash
-set -e
-
-# Create necessary directory for TeamSpeak 6 data
-mkdir -p "${APP_DATA_DIR}/data/tsserver"
-
-echo "TeamSpeak 6 data directory created successfully"
