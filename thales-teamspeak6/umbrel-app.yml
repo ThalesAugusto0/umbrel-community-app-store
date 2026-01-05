@@ -5,7 +5,7 @@ tagline: Servidor de voz de alta qualidade para comunicação em grupo
 icon: https://www.teamspeak.com/user/themes/teamspeak/images/ts-logo.svg
 category: communication
 version: "6.0.0"
-port: 80
+port: 8888
 description: >-
   O TeamSpeak 6 é uma solução de comunicação por voz de alta qualidade projetada para jogos online e comunicação em equipe.
 
