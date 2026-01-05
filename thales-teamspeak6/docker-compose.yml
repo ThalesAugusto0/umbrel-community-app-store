@@ -1,7 +1,7 @@
 services:
   app_proxy:
     environment:
-      APP_HOST: thales-teamspeak6_web_1
+      APP_HOST: web
       APP_PORT: 8888
       PROXY_AUTH_ADD: "false"
 

@@ -1,8 +1,11 @@
 #!/bin/bash
 set -e
 
-# Create directories
-mkdir -p "${APP_DATA_DIR}/data/tsserver"
+# Create TeamSpeak directories
+mkdir -p "${APP_DATA_DIR}/data/tsserver/logs"
+mkdir -p "${APP_DATA_DIR}/data/tsserver/files"
+
+# Create web interface directory
 mkdir -p "${APP_DATA_DIR}/web"
 
 # Copy web interface
