@@ -1,0 +1,61 @@
+manifestVersion: 1
+id: thales-teamspeak6
+name: TeamSpeak 6 Server
+tagline: Servidor de voz de alta qualidade para comunicação em grupo
+icon: https://www.teamspeak.com/user/themes/teamspeak/images/ts-logo.svg
+category: communication
+version: "6.0.0"
+port: 10080
+description: >-
+  O TeamSpeak 6 é uma solução de comunicação por voz de alta qualidade projetada para jogos online e comunicação em equipe.
+
+
+  Com baixa latência e qualidade de áudio superior, o TeamSpeak permite que grupos de qualquer tamanho se comuniquem de forma clara e eficiente.
+
+
+  <strong>Recursos principais:</strong>
+
+  - Voz de alta qualidade com baixa latência
+
+  - Suporte para milhares de usuários simultâneos
+
+  - Canais e salas personalizáveis
+
+  - Sistema de permissões granular
+
+  - Transferência de arquivos integrada
+
+  - Interface WebQuery para gerenciamento
+
+  - Criptografia de ponta a ponta
+
+
+  <strong>Portas utilizadas:</strong>
+
+  - 9987/UDP: Voz (porta principal)
+
+  - 10011/TCP: ServerQuery (gerenciamento)
+
+  - 30033/TCP: Transferência de arquivos
+
+  - 10080/TCP: WebQuery (interface web)
+
+
+  <strong>Primeiro acesso:</strong>
+
+  Após a instalação, você precisará conectar ao servidor usando o cliente TeamSpeak 6.
+  Use o IP do seu servidor Umbrel e a porta 9987. A senha de administrador configurada é: senha_admin (altere nas configurações do app).
+developer: TeamSpeak Systems GmbH
+website: https://www.teamspeak.com/
+submitter: Thales Augusto
+submission: https://github.com/thales/umbrel-community-app-store
+support: https://support.teamspeak.com/
+repo: https://github.com/TeamspeakSystems
+gallery:
+  - https://www.teamspeak.com/user/pages/02.news/teamspeak-server-6-0-0-beta-1-release/hero-ts6-beta-release.jpg
+releaseNotes: >-
+  Instalação inicial do TeamSpeak 6 Server no Umbrel.
+
+
+  Esta versão inclui todas as funcionalidades principais do TeamSpeak 6, incluindo comunicação por voz de alta qualidade,
+  gerenciamento de canais, transferência de arquivos e interface web.

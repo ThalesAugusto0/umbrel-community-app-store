@@ -1,0 +1,24 @@
+version: '3.7'
+
+services:
+  app_proxy:
+    environment:
+      APP_HOST: thales-teamspeak6_teamspeak_1
+      APP_PORT: 10080
+      PROXY_AUTH_ADD: "false"
+
+  teamspeak:
+    image: teamspeaksystems/teamspeak6-server:latest
+    restart: on-failure
+    init: true
+    environment:
+      - TSSERVER_LICENSE_ACCEPTED=accept
+      - TSSERVER_DB_SQLITE_PATH=/var/tsserver/ts3server.sqlitedb
+      - TSSERVER_INSTANCE_PASSWORD=senha_admin
+    volumes:
+      - ${APP_DATA_DIR}/data/tsserver:/var/tsserver
+    ports:
+      - "9987:9987/udp"
+      - "10011:10011/tcp"
+      - "30033:30033/tcp"
+      - "10080:10080/tcp"
