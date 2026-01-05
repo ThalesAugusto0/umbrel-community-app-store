@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TeamSpeak 6 Server</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+        }
+        h1 {
+            color: #2d3748;
+            margin-bottom: 10px;
+            font-size: 2em;
+        }
+        .subtitle {
+            color: #718096;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+        .info-box {
+            background: #f7fafc;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+        .info-box h2 {
+            color: #2d3748;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        .connection-detail {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .connection-detail:last-child {
+            border-bottom: none;
+        }
+        .label {
+            color: #4a5568;
+            font-weight: 600;
+        }
+        .value {
+            color: #2d3748;
+            font-family: 'Courier New', monospace;
+            background: #edf2f7;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.95em;
+        }
+        .download-btn {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+            margin-top: 20px;
+        }
+        .download-btn:hover {
+            background: #5a67d8;
+        }
+        .ports-list {
+            margin-top: 15px;
+        }
+        .port-item {
+            padding: 8px 0;
+            color: #4a5568;
+        }
+        .port-number {
+            font-weight: 600;
+            color: #667eea;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>TeamSpeak 6 Server</h1>
+        <p class="subtitle">Servidor de voz de alta qualidade</p>
+
+        <div class="info-box">
+            <h2>Como Conectar</h2>
+            <div class="connection-detail">
+                <span class="label">Endereço do Servidor:</span>
+                <span class="value" id="server-ip">Carregando...</span>
+            </div>
+            <div class="connection-detail">
+                <span class="label">Porta de Voz:</span>
+                <span class="value">9987</span>
+            </div>
+            <div class="connection-detail">
+                <span class="label">Senha Admin:</span>
+                <span class="value">senha_admin</span>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <h2>Portas Utilizadas</h2>
+            <div class="ports-list">
+                <div class="port-item">
+                    <span class="port-number">9987/UDP</span> - Comunicação de voz
+                </div>
+                <div class="port-item">
+                    <span class="port-number">10011/TCP</span> - ServerQuery (gerenciamento)
+                </div>
+                <div class="port-item">
+                    <span class="port-number">30033/TCP</span> - Transferência de arquivos
+                </div>
+                <div class="port-item">
+                    <span class="port-number">10080/TCP</span> - WebQuery API
+                </div>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <h2>Download do Cliente</h2>
+            <p style="color: #4a5568; margin-bottom: 10px;">
+                Para conectar ao servidor, você precisa do cliente TeamSpeak 6:
+            </p>
+            <a href="https://www.teamspeak.com/downloads" class="download-btn" target="_blank">
+                Baixar Cliente TeamSpeak
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Get server IP from window location
+        const serverIp = window.location.hostname;
+        document.getElementById('server-ip').textContent = serverIp || 'localhost';
+    </script>
+</body>
+</html>

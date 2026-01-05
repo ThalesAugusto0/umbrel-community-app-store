@@ -1,0 +1,11 @@
+#!/bin/bash
+set -e
+
+# Create directories
+mkdir -p "${APP_DATA_DIR}/data/tsserver"
+mkdir -p "${APP_DATA_DIR}/web"
+
+# Copy web interface
+cp /app/web/index.html "${APP_DATA_DIR}/web/"
+
+echo "TeamSpeak 6 initialized successfully"
