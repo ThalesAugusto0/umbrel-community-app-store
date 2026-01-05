@@ -2,7 +2,7 @@ manifestVersion: 1
 id: thales-teamspeak6
 name: TeamSpeak 6 Server
 tagline: Servidor de voz de alta qualidade para comunicação em grupo
-icon: https://www.teamspeak.com/user/themes/teamspeak/images/ts-logo.svg
+icon: https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/teamspeak.svg
 category: communication
 version: "6.0.0"
 port: 8888
