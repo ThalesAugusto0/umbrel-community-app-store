@@ -5,6 +5,9 @@ set -e
 mkdir -p "${APP_DATA_DIR}/data/tsserver/logs"
 mkdir -p "${APP_DATA_DIR}/data/tsserver/files"
 
+# Set permissions for TeamSpeak to write (container may run as different user)
+chmod -R 777 "${APP_DATA_DIR}/data/tsserver"
+
 # Create web interface directory
 mkdir -p "${APP_DATA_DIR}/web"
 
